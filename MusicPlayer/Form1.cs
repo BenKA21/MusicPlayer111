@@ -18,9 +18,12 @@ namespace MusicPlayer
             InitializeComponent();
         }
 
+
         String[] paths, files;
 
         String[] pathsP, filesP;
+
+		int hasPlaylistBeenCreated = 0;
 
         private void songLibraryListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -31,6 +34,8 @@ namespace MusicPlayer
 
         private void button1_Click(object sender, EventArgs e)
         {
+			hasPlaylistBeenCreated = 1;
+
             playlistLabel.Visible = true;
             playlistListBox.Visible = true;
             renamePlaylistButton.Visible = true;
@@ -73,8 +78,10 @@ namespace MusicPlayer
                     playlistListBox.Items.Add(filesP[i]);
                 }
 
-
+				
             }
+
+
         }
 
         private void playlistListBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -173,15 +180,24 @@ namespace MusicPlayer
 
 		private void shufflePlaylistButton_Click(object sender, EventArgs e)
 		{
-			//Finds how many songs are currently in library
-			int playlistNumberOfSongs = playlistListBox.Items.Count;
+			if (hasPlaylistBeenCreated == 0)
+			{
+				MessageBox.Show("No songs to select from. Please create a playlist and upload songs, then try again", "Error");
+			}
 
-			//Chooses random number between 0 and total amount of songs in library
-			Random rnd = new Random();
-			int playlistShufflePick = rnd.Next(0, playlistNumberOfSongs);
+			else
+			{
+				//Finds how many songs are currently in library
+				int numberOfSongsP = playlistListBox.Items.Count;
 
-			//Selects song based on random number
-			songLibraryListBox.SelectedIndex = playlistShufflePick;
+				//Chooses random number between 0 and total amount of songs in library
+				Random rnd = new Random();
+				int shufflePickP = rnd.Next(0, numberOfSongsP);
+
+				//Selects song based on random number
+				playlistListBox.SelectedIndex = shufflePickP;
+			}
+			
 		}
 
 		private void closeSearchButton_Click(object sender, EventArgs e)
@@ -191,9 +207,14 @@ namespace MusicPlayer
 			closeSearchButton.Visible = false;
 
 			//resets search textbox, and search listbox
-			searchTextBox.Text = "";
+			searchTextBox.Text = "Search song name or artist";
 			searchListBox.Items.Clear();
 
+		}
+
+		private void searchTextBox_Click(object sender, EventArgs e)
+		{
+			searchTextBox.Text = "";
 		}
 
 		private void selectSongsButton_Click(object sender, EventArgs e)
@@ -224,6 +245,8 @@ namespace MusicPlayer
             playlistLabel.Text = renameTextBox.Text;
             renameTextBox.Visible = false;
             saveButton.Visible = false;
+
+			renameTextBox.Text = "";
         }
 
     }

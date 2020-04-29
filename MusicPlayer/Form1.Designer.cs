@@ -84,7 +84,7 @@
 			this.shuffleButton.BackColor = System.Drawing.Color.Black;
 			this.shuffleButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.shuffleButton.ForeColor = System.Drawing.Color.White;
-			this.shuffleButton.Location = new System.Drawing.Point(540, 319);
+			this.shuffleButton.Location = new System.Drawing.Point(572, 319);
 			this.shuffleButton.Name = "shuffleButton";
 			this.shuffleButton.Size = new System.Drawing.Size(80, 35);
 			this.shuffleButton.TabIndex = 3;
@@ -100,6 +100,7 @@
 			this.searchTextBox.Size = new System.Drawing.Size(153, 20);
 			this.searchTextBox.TabIndex = 4;
 			this.searchTextBox.Text = "Search song name or artist";
+			this.searchTextBox.Click += new System.EventHandler(this.searchTextBox_Click);
 			// 
 			// searchButton
 			// 
@@ -229,10 +230,14 @@
 			// 
 			// searchListBox
 			// 
+			this.searchListBox.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+			this.searchListBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.searchListBox.ForeColor = System.Drawing.Color.White;
 			this.searchListBox.FormattingEnabled = true;
+			this.searchListBox.ItemHeight = 18;
 			this.searchListBox.Location = new System.Drawing.Point(0, 32);
 			this.searchListBox.Name = "searchListBox";
-			this.searchListBox.Size = new System.Drawing.Size(250, 277);
+			this.searchListBox.Size = new System.Drawing.Size(250, 274);
 			this.searchListBox.TabIndex = 15;
 			this.searchListBox.SelectedIndexChanged += new System.EventHandler(this.searchListBox_SelectedIndexChanged);
 			// 
@@ -321,7 +326,7 @@
 			this.shufflePlaylistButton.BackColor = System.Drawing.Color.Black;
 			this.shufflePlaylistButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.shufflePlaylistButton.ForeColor = System.Drawing.Color.White;
-			this.shufflePlaylistButton.Location = new System.Drawing.Point(626, 319);
+			this.shufflePlaylistButton.Location = new System.Drawing.Point(572, 319);
 			this.shufflePlaylistButton.Name = "shufflePlaylistButton";
 			this.shufflePlaylistButton.Size = new System.Drawing.Size(80, 35);
 			this.shufflePlaylistButton.TabIndex = 17;
