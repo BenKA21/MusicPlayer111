@@ -34,9 +34,14 @@ namespace MusicPlayer
             playlistLabel.Visible = true;
             playlistListBox.Visible = true;
             renamePlaylistButton.Visible = true;
+			playlistSelectSongsButton.Visible = true;
 
             newPlaylistButton.Enabled = false;
             newPlaylistButton.Visible = false;
+
+			newPlaylistButton.Visible = false;
+
+			
 
         }
 
@@ -126,18 +131,9 @@ namespace MusicPlayer
             songLibraryListBox.SelectedIndex = shufflePick;
         }
 
-        private void closeSearchButton_Click(object sender, EventArgs e)
-        {
-            //makes UI changes
-            this.searchListBox.SendToBack();
-            closeSearchButton.Visible = false;
-
-            //resets search textbox, and search listbox
-            searchTextBox.Text = "";
-            searchListBox.Items.Clear();
 
             
-        }
+        
 
         private void searchListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -149,7 +145,58 @@ namespace MusicPlayer
 
         }
 
-        private void selectSongsButton_Click(object sender, EventArgs e)
+		private void playlistButton_Click(object sender, EventArgs e)
+		{
+			playlistPanel.Visible = true;
+
+			songLibraryPanel.Visible = false;
+
+			playlistButton.BackColor = Color.Orange;
+			songLibraryButton.BackColor = Color.Black;
+
+			shuffleButton.Visible = false;
+			shufflePlaylistButton.Visible = true;
+		}
+
+		private void songLibraryButton_Click(object sender, EventArgs e)
+		{
+			playlistPanel.Visible = false; 
+
+			songLibraryPanel.Visible = true;
+
+			shuffleButton.Visible = true;
+			shufflePlaylistButton.Visible = false;
+
+			songLibraryButton.BackColor = Color.Orange;
+			playlistButton.BackColor = Color.Black;
+		}
+
+		private void shufflePlaylistButton_Click(object sender, EventArgs e)
+		{
+			//Finds how many songs are currently in library
+			int playlistNumberOfSongs = playlistListBox.Items.Count;
+
+			//Chooses random number between 0 and total amount of songs in library
+			Random rnd = new Random();
+			int playlistShufflePick = rnd.Next(0, playlistNumberOfSongs);
+
+			//Selects song based on random number
+			songLibraryListBox.SelectedIndex = playlistShufflePick;
+		}
+
+		private void closeSearchButton_Click(object sender, EventArgs e)
+		{
+			//makes UI changes
+			this.searchListBox.SendToBack();
+			closeSearchButton.Visible = false;
+
+			//resets search textbox, and search listbox
+			searchTextBox.Text = "";
+			searchListBox.Items.Clear();
+
+		}
+
+		private void selectSongsButton_Click(object sender, EventArgs e)
         {
             //Code to select songs
             OpenFileDialog ofd = new OpenFileDialog();
