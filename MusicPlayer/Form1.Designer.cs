@@ -150,7 +150,7 @@
 			this.renamePlaylistButton.Name = "renamePlaylistButton";
 			this.renamePlaylistButton.Size = new System.Drawing.Size(125, 35);
 			this.renamePlaylistButton.TabIndex = 8;
-			this.renamePlaylistButton.Text = "Rename";
+			this.renamePlaylistButton.Text = "Rename Playlist";
 			this.renamePlaylistButton.UseVisualStyleBackColor = false;
 			this.renamePlaylistButton.Visible = false;
 			this.renamePlaylistButton.Click += new System.EventHandler(this.renamePlaylist_Click);
@@ -197,7 +197,7 @@
 			this.playlistSelectSongsButton.Name = "playlistSelectSongsButton";
 			this.playlistSelectSongsButton.Size = new System.Drawing.Size(250, 35);
 			this.playlistSelectSongsButton.TabIndex = 12;
-			this.playlistSelectSongsButton.Text = "Select songs";
+			this.playlistSelectSongsButton.Text = "Upload Songs";
 			this.playlistSelectSongsButton.UseVisualStyleBackColor = false;
 			this.playlistSelectSongsButton.Visible = false;
 			this.playlistSelectSongsButton.Click += new System.EventHandler(this.playlistSelectSongsButton_Click);
@@ -211,7 +211,7 @@
 			this.selectSongsButton.Name = "selectSongsButton";
 			this.selectSongsButton.Size = new System.Drawing.Size(250, 35);
 			this.selectSongsButton.TabIndex = 13;
-			this.selectSongsButton.Text = "Select Songs";
+			this.selectSongsButton.Text = "Upload Songs";
 			this.selectSongsButton.UseVisualStyleBackColor = false;
 			this.selectSongsButton.Click += new System.EventHandler(this.selectSongsButton_Click);
 			// 
@@ -315,7 +315,7 @@
 			this.playlistPanel.Controls.Add(this.renamePlaylistButton);
 			this.playlistPanel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.playlistPanel.ForeColor = System.Drawing.Color.White;
-			this.playlistPanel.Location = new System.Drawing.Point(950, 4);
+			this.playlistPanel.Location = new System.Drawing.Point(150, 4);
 			this.playlistPanel.Name = "playlistPanel";
 			this.playlistPanel.Size = new System.Drawing.Size(258, 432);
 			this.playlistPanel.TabIndex = 21;
@@ -326,7 +326,7 @@
 			this.shufflePlaylistButton.BackColor = System.Drawing.Color.Black;
 			this.shufflePlaylistButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.shufflePlaylistButton.ForeColor = System.Drawing.Color.White;
-			this.shufflePlaylistButton.Location = new System.Drawing.Point(572, 319);
+			this.shufflePlaylistButton.Location = new System.Drawing.Point(658, 319);
 			this.shufflePlaylistButton.Name = "shufflePlaylistButton";
 			this.shufflePlaylistButton.Size = new System.Drawing.Size(80, 35);
 			this.shufflePlaylistButton.TabIndex = 17;
@@ -340,7 +340,7 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-			this.ClientSize = new System.Drawing.Size(1501, 835);
+			this.ClientSize = new System.Drawing.Size(1016, 547);
 			this.Controls.Add(this.shufflePlaylistButton);
 			this.Controls.Add(this.playlistPanel);
 			this.Controls.Add(this.playlistButton);
@@ -351,7 +351,6 @@
 			this.Controls.Add(this.shuffleButton);
 			this.Name = "MusicPlayer";
 			this.Text = "MusicPlayer";
-			this.Load += new System.EventHandler(this.MusicPlayer_Load);
 			((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
 			this.songLibraryPanel.ResumeLayout(false);

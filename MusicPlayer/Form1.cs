@@ -18,12 +18,16 @@ namespace MusicPlayer
             InitializeComponent();
         }
 
-
+		//The array to hold the URL and song names in song library
         String[] paths, files;
 
-        String[] pathsP, filesP;
+		//The array to hold the URL and song names in playlist library
+		String[] pathsP, filesP;
 
-		int hasPlaylistBeenCreated = 0;
+		//int that will be updated when playlist is created to act as a check
+		int doesSongLibraryContainSongs = 0;
+		int doesPlaylistContainSongs = 0;
+
 
         private void songLibraryListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -34,8 +38,10 @@ namespace MusicPlayer
 
         private void button1_Click(object sender, EventArgs e)
         {
-			hasPlaylistBeenCreated = 1;
+			//updates playlist check
+			
 
+			//UI changes
             playlistLabel.Visible = true;
             playlistListBox.Visible = true;
             renamePlaylistButton.Visible = true;
@@ -44,15 +50,11 @@ namespace MusicPlayer
             newPlaylistButton.Enabled = false;
             newPlaylistButton.Visible = false;
 
-			newPlaylistButton.Visible = false;
-
-			
-
         }
 
         private void renamePlaylist_Click(object sender, EventArgs e)
         {
-            
+            //UI changes
             renameTextBox.Visible = true;
             saveButton.Visible = true;
         }
@@ -70,6 +72,8 @@ namespace MusicPlayer
                 filesP = ofdP.SafeFileNames; //Save the names of the track in files array
                 pathsP = ofdP.FileNames; //Save the paths of the tracks in paths array
 
+				doesPlaylistContainSongs = 1; //Updates check 
+
 
                 //Display the music titles in listbox
 
@@ -86,7 +90,7 @@ namespace MusicPlayer
 
         private void playlistListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            axWindowsMediaPlayer1.URL = pathsP[playlistListBox.SelectedIndex];
+            axWindowsMediaPlayer1.URL = pathsP[playlistListBox.SelectedIndex]; //plays the selected song
         }
 
         private void searchButton_Click_1(object sender, EventArgs e)
@@ -102,11 +106,24 @@ namespace MusicPlayer
 
             }
 
-            this.searchListBox.BringToFront();
+			if (searchListBox.Items.Count == 0)
+			{
+				//Error message if no songs were found
+				MessageBox.Show("No songs were containing the text you searched", "No songs found");
+			}
+			
+			
+			else
+	        {
+				//UI changes
+				this.searchListBox.BringToFront();
 
-            closeSearchButton.Visible = true;
+				closeSearchButton.Visible = true;
 
-        }
+			}
+
+
+		}
 
         private void sortButton_Click(object sender, EventArgs e)
         {
@@ -127,15 +144,26 @@ namespace MusicPlayer
 
         private void shuffleButton_Click_1(object sender, EventArgs e)
         {
-            //Finds how many songs are currently in library
-            int numberOfSongs = songLibraryListBox.Items.Count;
 
-            //Chooses random number between 0 and total amount of songs in library
-            Random rnd = new Random();
-            int shufflePick = rnd.Next(0, numberOfSongs);
+			if (doesSongLibraryContainSongs == 1)
+			{
+				//Finds how many songs are currently in library
+				int numberOfSongs = songLibraryListBox.Items.Count;
 
-            //Selects song based on random number
-            songLibraryListBox.SelectedIndex = shufflePick;
+				//Chooses random number between 0 and total amount of songs in library
+				Random rnd = new Random();
+				int shufflePick = rnd.Next(0, numberOfSongs);
+
+				//Selects song based on random number
+				songLibraryListBox.SelectedIndex = shufflePick;
+			}
+
+			else
+			{
+				//Error message if no songs are available to shuffle
+				MessageBox.Show("No songs to select from. Please upload songs to the library, then try again", "Error");
+			}
+           
         }
 
 
@@ -147,13 +175,10 @@ namespace MusicPlayer
             axWindowsMediaPlayer1.URL = paths[searchListBox.SelectedIndex]; //Plays the selected song
         }
 
-        private void MusicPlayer_Load(object sender, EventArgs e)
-        {
-
-        }
 
 		private void playlistButton_Click(object sender, EventArgs e)
 		{
+			//UI changes
 			playlistPanel.Visible = true;
 
 			songLibraryPanel.Visible = false;
@@ -167,6 +192,7 @@ namespace MusicPlayer
 
 		private void songLibraryButton_Click(object sender, EventArgs e)
 		{
+			//UI changes
 			playlistPanel.Visible = false; 
 
 			songLibraryPanel.Visible = true;
@@ -180,8 +206,11 @@ namespace MusicPlayer
 
 		private void shufflePlaylistButton_Click(object sender, EventArgs e)
 		{
-			if (hasPlaylistBeenCreated == 0)
+
+			//Check to see if playlist has been created
+			if (doesPlaylistContainSongs == 0)
 			{
+				//Error message if no songs are available to shuffle
 				MessageBox.Show("No songs to select from. Please create a playlist and upload songs, then try again", "Error");
 			}
 
@@ -230,9 +259,11 @@ namespace MusicPlayer
                 files = ofd.SafeFileNames; //Save the names of the track in files array
                 paths = ofd.FileNames; //Save the paths of the tracks in paths array
 
-                //Display the music titles in listbox
+				doesSongLibraryContainSongs = 1;
 
-                for (int i = 0; i < files.Length; i++)
+				//Display the music titles in listbox
+
+				for (int i = 0; i < files.Length; i++)
                 {
                     songLibraryListBox.Items.Add(files[i]);
                 }
@@ -242,11 +273,23 @@ namespace MusicPlayer
 
         private void saveButton_Click_1(object sender, EventArgs e)
         {
-            playlistLabel.Text = renameTextBox.Text;
-            renameTextBox.Visible = false;
-            saveButton.Visible = false;
+			//Check to see if new playlist name is longer than 1 letter
+			if (renameTextBox.Text.Length <= 1)
+			{
+				MessageBox.Show("This name is too short, please choose a longer name and try again", "Name too short");
+			}
 
-			renameTextBox.Text = "";
+			//if it is, change playlist name and make UI changes;
+			else
+			{
+				playlistLabel.Text = renameTextBox.Text;
+				renameTextBox.Visible = false;
+				saveButton.Visible = false;
+
+				renameTextBox.Text = "";
+			}
+
+         
         }
 
     }
