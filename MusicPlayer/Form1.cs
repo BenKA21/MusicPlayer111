@@ -24,6 +24,7 @@ namespace MusicPlayer
 		//The array to hold the URL and song names in playlist library
 		String[] pathsP, filesP;
 
+
 		//int that will be updated when playlist is created to act as a check
 		int doesSongLibraryContainSongs = 0;
 		int doesPlaylistContainSongs = 0;
@@ -101,10 +102,19 @@ namespace MusicPlayer
                 if (songLibraryListBox.Items[i].ToString().ToLower().Contains(searchTextBox.Text.ToLower()))
 
                 {
+					//Adds songs to listbox
                     searchListBox.Items.Add(songLibraryListBox.Items[i]);
+
                 }
 
+				else
+				{
+
+				}
+
             }
+
+
 
 			if (searchListBox.Items.Count == 0)
 			{
@@ -166,14 +176,6 @@ namespace MusicPlayer
            
         }
 
-
-            
-        
-
-        private void searchListBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            axWindowsMediaPlayer1.URL = paths[searchListBox.SelectedIndex]; //Plays the selected song
-        }
 
 
 		private void playlistButton_Click(object sender, EventArgs e)
@@ -241,9 +243,19 @@ namespace MusicPlayer
 
 		}
 
+		private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			 axWindowsMediaPlayer1.URL = paths[songLibraryListBox.SelectedIndex];
+		}
+
 		private void searchTextBox_Click(object sender, EventArgs e)
 		{
 			searchTextBox.Text = "";
+		}
+
+		private void searchListBox_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			axWindowsMediaPlayer1.URL = paths[searchListBox.SelectedIndex];
 		}
 
 		private void selectSongsButton_Click(object sender, EventArgs e)
