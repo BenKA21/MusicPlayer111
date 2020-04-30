@@ -326,7 +326,7 @@
 			this.shufflePlaylistButton.BackColor = System.Drawing.Color.Black;
 			this.shufflePlaylistButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.shufflePlaylistButton.ForeColor = System.Drawing.Color.White;
-			this.shufflePlaylistButton.Location = new System.Drawing.Point(658, 319);
+			this.shufflePlaylistButton.Location = new System.Drawing.Point(572, 319);
 			this.shufflePlaylistButton.Name = "shufflePlaylistButton";
 			this.shufflePlaylistButton.Size = new System.Drawing.Size(80, 35);
 			this.shufflePlaylistButton.TabIndex = 17;
