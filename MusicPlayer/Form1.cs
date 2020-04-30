@@ -119,7 +119,7 @@ namespace MusicPlayer
 			if (searchListBox.Items.Count == 0)
 			{
 				//Error message if no songs were found
-				MessageBox.Show("No songs were containing the text you searched", "No songs found");
+				MessageBox.Show("No songs containined the text you searched for", "No songs found");
 			}
 			
 			
@@ -257,6 +257,8 @@ namespace MusicPlayer
 		{
 			axWindowsMediaPlayer1.URL = paths[searchListBox.SelectedIndex];
 		}
+
+
 
 		private void selectSongsButton_Click(object sender, EventArgs e)
         {

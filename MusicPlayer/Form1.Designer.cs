@@ -51,6 +51,8 @@
 			this.songLibraryPanel = new System.Windows.Forms.Panel();
 			this.playlistPanel = new System.Windows.Forms.Panel();
 			this.shufflePlaylistButton = new System.Windows.Forms.Button();
+			this.previousButton = new System.Windows.Forms.Button();
+			this.nextButton = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			this.songLibraryPanel.SuspendLayout();
@@ -335,12 +337,40 @@
 			this.shufflePlaylistButton.Visible = false;
 			this.shufflePlaylistButton.Click += new System.EventHandler(this.shufflePlaylistButton_Click);
 			// 
+			// previousButton
+			// 
+			this.previousButton.BackColor = System.Drawing.Color.Black;
+			this.previousButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.previousButton.ForeColor = System.Drawing.Color.White;
+			this.previousButton.Location = new System.Drawing.Point(486, 319);
+			this.previousButton.Name = "previousButton";
+			this.previousButton.Size = new System.Drawing.Size(80, 35);
+			this.previousButton.TabIndex = 22;
+			this.previousButton.Text = "Previous";
+			this.previousButton.UseVisualStyleBackColor = false;
+			this.previousButton.Visible = false;
+			// 
+			// nextButton
+			// 
+			this.nextButton.BackColor = System.Drawing.Color.Black;
+			this.nextButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.nextButton.ForeColor = System.Drawing.Color.White;
+			this.nextButton.Location = new System.Drawing.Point(658, 319);
+			this.nextButton.Name = "nextButton";
+			this.nextButton.Size = new System.Drawing.Size(80, 35);
+			this.nextButton.TabIndex = 23;
+			this.nextButton.Text = "Next";
+			this.nextButton.UseVisualStyleBackColor = false;
+			this.nextButton.Visible = false;
+			// 
 			// MusicPlayer
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
 			this.ClientSize = new System.Drawing.Size(1016, 547);
+			this.Controls.Add(this.nextButton);
+			this.Controls.Add(this.previousButton);
 			this.Controls.Add(this.shufflePlaylistButton);
 			this.Controls.Add(this.playlistPanel);
 			this.Controls.Add(this.playlistButton);
@@ -385,6 +415,8 @@
 		private System.Windows.Forms.Panel songLibraryPanel;
 		private System.Windows.Forms.Panel playlistPanel;
 		private System.Windows.Forms.Button shufflePlaylistButton;
+		private System.Windows.Forms.Button previousButton;
+		private System.Windows.Forms.Button nextButton;
 	}
 }
 
